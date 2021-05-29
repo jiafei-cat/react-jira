@@ -1,0 +1,391 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "prettier",
+    "import",
+    "react",
+    "react-hooks"
+  ],
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "globals": {
+    "ADMIN_WMS": false,
+    "ADMIN_MWMS": false,
+    "CDN": false,
+    "axios": false,
+    "_": "readonly",
+    "supervar": "readonly",
+    "React": "readonly",
+    "ReactDOM": "readonly",
+    "ga":"readonly"
+  },
+  "rules": {
+    // 建议使用const
+    "prefer-const": "error",
+    // 禁止使用 var
+    "no-var": "error",
+    // 禁止使用 new Object()
+    "no-new-object": "error",
+    // 要求对象字面量简写语法
+    "object-shorthand": "error",
+    // 当没有严格要求时，禁止对象字面量属性名称使用引号
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
+    // 禁止直接使用 Object.prototypes 的内置属性
+    "no-prototype-builtins": "error",
+    // 禁止使用 new Array()
+    "no-array-constructor": "error",
+    // 强制数组方法的回调函数中有 return 语句
+    // from, every, map, filter, find, findIndex, map, reduce, reduceRight, some, sort
+    "array-callback-return": "error",
+    // 优先使用数组和对象解构
+    "prefer-destructuring": "error",
+    // 使用单引号
+    "quotes": [
+      "error",
+      "single"
+    ],
+    // 建议使用模板而非字符串连接
+    "prefer-template": "error",
+    // 模板字符串中，禁止花括号内出现空格
+    "template-curly-spacing": [
+      "error",
+      "never"
+    ],
+    // 禁止使用 eval()
+    "no-eval": [
+      "error",
+      {
+        "allowIndirect": true
+      }
+    ],
+    // 禁止无意义的转义
+    "no-useless-escape": "error",
+    // 立即调用函数用括号包裹，var x = (function () { return { y: 1 }}()))
+    "wrap-iife": [
+      "error",
+      "outside",
+      {
+        "functionPrototypeMethods": true
+      }
+    ],
+    // 禁止循环中存在函数
+    "no-loop-func": "error",
+    // 建议使用剩余参数代替 arguments，解构
+    "prefer-rest-params": "error",
+    // 禁止使用 new Function()
+    "no-new-func": "error",
+    // 要求函数圆括号之前有一个空格
+    "space-before-function-paren": [
+      "error",
+      "never"
+    ],
+    // 要求语句块之前的空格
+    "space-before-blocks": [
+      "error",
+      "always"
+    ],
+    // 禁止对函数参数再赋值
+    "no-param-reassign": "error",
+    // 建议使用扩展运算符而非.apply()
+    // const x = [1, 2, 3, 4, 5];
+    // console.log(...x);
+    "prefer-spread": "error",
+    // 函数调用，要求每个括号使用一致的换行。如果一个括号有换行，另一个括号没有换行，则报错
+    "function-paren-newline": [
+      "error",
+      "consistent"
+    ],
+    // 要求使用箭头函数作为回调
+    "prefer-arrow-callback": "error",
+    // 箭头函数的箭头之前与之后要有空格
+    "arrow-spacing": "error",
+    // 简头函数，当只有一个参数时，允放省略圆括号,
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    // 当大括号是可以省略的，强制不使用它们
+    "arrow-body-style": "error",
+    "no-confusing-arrow": [
+      "error",
+      {
+        "allowParens": true
+      }
+    ],
+    // 禁止在箭头函数体之前出现换行
+    "implicit-arrow-linebreak": "error",
+    // 禁用不必要的构造函数
+    "no-useless-constructor": "error",
+    // 不允许类成员中有重复的名称
+    "no-dupe-class-members": "error",
+    // 禁止重复导入
+    "no-duplicate-imports": "error",
+    // 导出的变量必须使用 const 声明
+    "import/no-mutable-exports": "error",
+    // 鼓励使用更多文件，每个文件只做一件事情并导出，这样可读性和可维护性更好
+    "import/prefer-default-export": "error",
+    // import 放在其他所有语句之前
+    "import/first": "error",
+    // 在import语句里不允许Webpack loader语法
+    "import/no-webpack-loader-syntax": "error",
+    // 禁用迭代器
+    "no-iterator": "error",
+    // 禁用某些语法
+    // https://github.com/eslint/espree/blob/master/lib/ast-node-types.js
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "ForStatement",
+        "message": "请用函数式替代 for...in，查阅 MDN 上有关于对象与数组的原型方法"
+      },
+      {
+        "selector": "ForInStatement",
+        "message": "请用函数式替代 for...in，查阅 MDN 上有关于对象的原型方法"
+      },
+      {
+        "selector": "ForOfStatement",
+        "message": "请用函数式替代 for...in，查阅 MDN 上有关于对象与数组的原型方法"
+      },
+      {
+        "selector": "WithStatement",
+        "message": "禁止使用 with 语句"
+      },
+      {
+        "selector": "CallExpression[callee.name='setTimeout'][arguments.length!=2]",
+        "message": "setTimout 调用的时候，必须有两个参数"
+      }
+    ],
+    // 访问属性时使用点符号
+    "dot-notation": "error",
+    // 做幂运算时用幂操作符 **,GMath.pow(2, 10) 等价于 2**10
+    "no-restricted-properties": "error",
+    // 禁用未声明的变量
+    "no-undef": "error",
+    // 每个变量都用一个 const 或 let
+    "one-var": [
+      "error",
+      "never"
+    ],
+    // 禁止 const a = b = c = 1;
+    "no-multi-assign": "error",
+    // 禁止使用自增自减运算符（++， --），for 循环除外
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    // 在赋值的时候避免在 = 前/后换行
+    "operator-linebreak": "error",
+    // 不允许有未使用的变量
+    "no-unused-vars": "error",
+    // 用 === 和 !== 而不是 == 和 !=
+    "eqeqeq": "error",
+    // 在case和default分句里用大括号创建一块包含语法声明的区域(e.g. let, const, function, and class)
+    "no-case-declarations": "error",
+    // 避免不需要的三元表达式
+    "no-unneeded-ternary": "error",
+    // 禁止混合使用不同的操作符
+    "no-mixed-operators": "error",
+    // 禁止单行语句之前有换行 if(boo} return true
+    "nonblock-statement-body-position": "error",
+    // if表达式的else和if的关闭大括号在一行
+    "brace-style": "error",
+    // 如果 if 语句中总是需要用 return 返回， 那后续的 else 就不需要写了。
+    // if 块中包含 return， 它后面的 else if 块中也包含了 return， 这个时候就可以把 return 分到多个 if 语句块中
+    "no-else-return": "error",
+    // 所有注释开头空一个，方便阅读
+    "spaced-comment": "error",
+    // tab用两个空格
+    "indent": [
+      "error",
+      2
+    ],
+    // 在控制语句(if, while 等)的圆括号前后空一格
+    "keyword-spacing": "error",
+    // 用空格来隔开运算符
+    "space-infix-ops": "error",
+    // 文件结尾空一行
+    "eol-last": "error",
+    // 禁止属性访问点号前有空白符
+    "no-whitespace-before-property": "error",
+    // 要求方法链中每个调用都另起一行
+    "newline-per-chained-call": "error",
+    // 禁止块语句和类的开始或末尾有空行
+    "padded-blocks": [
+      "error",
+      "never"
+    ],
+    // 圆括号里不要加空格
+    "space-in-parens": "error",
+    // 方括号里不要加空格
+    "array-bracket-spacing": "error",
+    // 花括号里要加空格
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    // 作为语句的花括号内也要加空格
+    "block-spacing": "error",
+    // 行宽 80，tab 字符宽度 2
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "tabWidth": 2,
+        // 忽略所有拖尾注释和行内注释
+        "ignoreComments": true,
+        // 忽略含有双引号或单引号字符串的行
+        "ignoreStrings": true,
+        // 忽略含有链接的行
+        "ignoreUrls": true,
+        // 忽略包含模板字面量的行
+        "ignoreTemplateLiterals": true,
+        // 忽略包含正则表达式的行
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    // 逗号前不要空格，逗号后需要空格
+    "comma-spacing": "error",
+    // 使用变量访问属性时，禁用方括号中的空格
+    "computed-property-spacing": "error",
+    // 调用函数时，函数名和圆括号之间不要空格
+    "func-call-spacing": "error",
+    // 在对象的字面量属性中， key value 之间要有空格
+    "key-spacing": "error",
+    // 行末不要空格
+    "no-trailing-spaces": "error",
+    // 文件结尾只能出现一个空行
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 1,
+        "maxBOF": 1
+      }
+    ],
+    // 逗号不能做为一行的开头
+    "comma-style": "error",
+    // 要求在多行对象与数组的最后一个元素后使用逗号
+    // 简化了对象和数组增加或删除元素
+    // 提高了代码差异的清晰度
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    // 结尾不使用分号
+    "semi": [
+      "error",
+      "never"
+    ],
+    // 用小驼峰式命名你的对象、函数、实例
+    "camelcase": "error",
+    // 类名用大驼峰
+    "new-cap": "error",
+    // 推荐使用无 state 的 方法组件
+    // 一个文件不应该有多个 class 组件，可以有多个 fucntion 组件
+    "react/no-multi-comp": [
+      "error",
+      {
+        "ignoreStateless": true
+      }
+    ],
+    "react/prefer-stateless-function": "error",
+    // 组件名大写
+    "react/jsx-pascal-case": "error",
+    // 如果多属性标签，每个属性单独一行
+    "react/jsx-closing-bracket-location": "error",
+    "react/jsx-closing-tag-location": "error",
+    // JSX 属性用单引号
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    // 总是在自动关闭的标签前加一个空格，正常情况下也不需要换行
+    "no-multi-spaces": "error",
+    "react/jsx-tag-spacing": "error",
+    // 不要在JSX {} 引用括号里两边加空格.
+    "react/jsx-curly-spacing": "error",
+    // 如果属性值为 true, 可以直接省略
+    "react/jsx-boolean-value": "error",
+    // 总是在Refs里使用回调函数
+    "react/no-string-refs": "error",
+    // 将多行标签写在圆括号中
+    "react/jsx-wrap-multilines": "error",
+    // 对于没有子元素的标签来说总是自己关闭标签
+    "react/self-closing-comp": "error",
+    // 当在 render() 里使用事件处理方法时，禁止使用 bind
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "allowArrowFunctions": true,
+        "allowBind": false,
+        "allowFunctions": true
+      }
+    ],
+    // 在 render 方法中总是确保 return 返回值
+    "react/require-render-return": "error",
+    "react/jsx-uses-vars": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react/no-unused-state": "error", // 禁止定义未使用的state
+    "react/sort-comp": [ // 组件中，方法的顺序
+      "error",
+      {
+        "order": [
+          "static-variables", // 静态属性
+          "static-methods", // 静态方法
+          "constructor", // 构造函数
+          "instance-variables", // 实例属性 this.state
+          "instance-methods", // 实例方法 this.handleChange
+          "everything-else", // 其它
+          "lifecycle", // 生命周期方法
+          "render" // 渲染方法
+        ],
+        "groups": {
+          "lifecycle": [
+            // 生命周期方法的调用顺序
+            "displayName",
+            "propTypes",
+            "contextTypes",
+            "childContextTypes",
+            "mixins",
+            "statics",
+            "defaultProps",
+            "getDefaultProps",
+            "state",
+            "getInitialState",
+            "getChildContext",
+            "getDerivedStateFromProps",
+            "componentWillMount",
+            "UNSAFE_componentWillMount",
+            "componentDidMount",
+            "componentWillReceiveProps",
+            "UNSAFE_componentWillReceiveProps",
+            "shouldComponentUpdate",
+            "componentWillUpdate",
+            "UNSAFE_componentWillUpdate",
+            "getSnapshotBeforeUpdate",
+            "componentDidUpdate",
+            "componentDidCatch",
+            "componentWillUnmount"
+          ]
+        }
+      }
+    ],
+    "react-hooks/exhaustive-deps": "error"
+  }
+}
