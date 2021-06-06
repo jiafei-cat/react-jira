@@ -1,8 +1,10 @@
-import Index from './screens/project-list'
+import { LoginScreen } from './screens/login'
+// import Index from './screens/project-list'
 function App() {
   return (
     <div className="Ap">
-      <Index></Index>
+      {/* <Index></Index> */}
+      <LoginScreen></LoginScreen>
     </div>
   )
 }

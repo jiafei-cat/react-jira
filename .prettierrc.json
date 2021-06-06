@@ -3,5 +3,6 @@
   "jsxBracketSameLine": true,
   "semi": false,
   "trailingComma": "es5",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "parser": "typescript"
 }

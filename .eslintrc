@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -11,7 +11,8 @@
     "prettier",
     "import",
     "react",
-    "react-hooks"
+    "react-hooks",
+    "@typescript-eslint"
   ],
   "env": {
     "node": true,

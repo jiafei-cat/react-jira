@@ -1,4 +1,22 @@
-export const SearchPanel = ({ param, setParam, users }) => {
+export interface User {
+  id: string
+  name: string
+  email: string
+  title: string
+  organization: string
+}
+
+interface SearchPanelProps {
+  users: User[]
+  param: {
+    name: string
+    personId: string
+  }
+  // eslint-disable-next-line no-unused-vars
+  setParam: (param: SearchPanelProps['param']) => void
+}
+
+export const SearchPanel = ({ users, param, setParam }: SearchPanelProps) => {
   return (
     <form action="">
       <div>
