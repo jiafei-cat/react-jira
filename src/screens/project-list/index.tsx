@@ -6,7 +6,7 @@ import { cleanObject, useMount, useDebounce } from '../../utils'
 import { useState, useEffect } from 'react'
 
 const apiUrl = process.env.REACT_APP_API_URL
-export default function ProjectListScreen() {
+export function ProjectListScreen() {
   const [users, setUsers] = useState([])
   const [list, setList] = useState([])
   const [param, setParam] = useState({
@@ -14,17 +14,17 @@ export default function ProjectListScreen() {
     personId: '',
   })
 
-  const debounceParam = useDebounce(param, 1000)
+  const debouncedParam = useDebounce(param, 1000)
 
   useEffect(() => {
     fetch(
-      `${apiUrl}/projects?${qs.stringify(cleanObject(debounceParam))}`
+      `${apiUrl}/projects?${qs.stringify(cleanObject(debouncedParam))}`
     ).then(async (response) => {
       if (response.ok) {
         setList(await response.json())
       }
     })
-  }, [debounceParam])
+  }, [debouncedParam])
 
   useMount(() => {
     fetch(`${apiUrl}/users`).then(async (response) => {

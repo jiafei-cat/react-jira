@@ -193,7 +193,7 @@
     // 在赋值的时候避免在 = 前/后换行
     "operator-linebreak": "error",
     // 不允许有未使用的变量
-    "no-unused-vars": "error",
+    // "no-unused-vars": "error",
     // 用 === 和 !== 而不是 == 和 !=
     "eqeqeq": "error",
     // 在case和default分句里用大括号创建一块包含语法声明的区域(e.g. let, const, function, and class)
