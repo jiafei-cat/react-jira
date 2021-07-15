@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import qs from 'qs'
 import { SearchPanel } from './search-panel'
 import { List } from './list'
 import { cleanObject, useMount, useDebounce } from '../../utils'
+import { useHttp } from '../../utils/http'
 
 import { useState, useEffect } from 'react'
 
@@ -13,25 +15,16 @@ export function ProjectListScreen() {
     name: '',
     personId: '',
   })
+  const client = useHttp()
 
   const debouncedParam = useDebounce(param, 1000)
 
   useEffect(() => {
-    fetch(
-      `${apiUrl}/projects?${qs.stringify(cleanObject(debouncedParam))}`
-    ).then(async (response) => {
-      if (response.ok) {
-        setList(await response.json())
-      }
-    })
+    client('projects', { data: cleanObject(debouncedParam) }).then(setList)
   }, [debouncedParam])
 
   useMount(() => {
-    fetch(`${apiUrl}/users`).then(async (response) => {
-      if (response.ok) {
-        setUsers(await response.json())
-      }
-    })
+    client('users').then(setUsers)
   })
 
   return (

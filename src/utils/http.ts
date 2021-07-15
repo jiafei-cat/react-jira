@@ -1,6 +1,9 @@
+/* eslint-disable no-undef */
+/* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 import qs from 'qs'
 import * as auth from './../auth.provider'
+import { useAuth } from '../context/auth.context'
 const apiUrl = process.env.REACT_APP_API_URL
 
 interface Config extends RequestInit {
@@ -10,11 +13,11 @@ interface Config extends RequestInit {
 
 export const http = async (
   endpoint: string,
-  { data, token, headers, ...customConfig }: Config
+  { data, token, headers, ...customConfig }: Config = {}
 ) => {
   const config = {
     method: 'GET',
-    header: {
+    headers: {
       Authorization: token ? `Bearer ${token}` : '',
       'Content-Type': data ? 'application/json' : '',
     },
@@ -40,8 +43,14 @@ export const http = async (
 
       if (response.ok) {
         return data
-      } else {
-        return Promise.reject(data)
       }
+
+      return Promise.reject(data)
     })
+}
+
+export const useHttp = () => {
+  const { user } = useAuth()
+  return (...[endpoint, config]: Parameters<typeof http>) =>
+    http(endpoint, { ...config, token: user?.token })
 }
