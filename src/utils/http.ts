@@ -54,3 +54,26 @@ export const useHttp = () => {
   return (...[endpoint, config]: Parameters<typeof http>) =>
     http(endpoint, { ...config, token: user?.token })
 }
+
+// type Person = {
+//   name: string
+//   age: number
+// }
+
+// type Man = Omit<Person, 'age'>
+
+// const xiaoming: Partial<Person> = {}
+// const xiaoming2: Man = { name: 'xx' }
+
+// type PersonKeys = keyof Person
+// type PersonOnlyName = Pick<Person, 'name'>
+// type Age = Exclude<PersonKeys, 'name'>
+// type Age2 = PersonKeys extends 'name' ? never : PersonKeys
+
+// type AgeObj = {
+//   [P in Age]: P extends keyof Person ? Person[P] : string
+// }
+
+// const xiaoming3: AgeObj = {
+//   age: 1,
+// }
